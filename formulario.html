@@ -1,100 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>Javier NS</title>
     <link rel="icon" href="/img/favicon.png" />
     <link rel="stylesheet" href="css.css" />
   </head>
   <body>
-    <script>
-      function comprueba_nombre() {
-        var nombre = document.getElementById("nombre").value;
-        var salida = document.getElementById("errnombre");
-        if (!/^[A-Z][a-z]{3,20}(\s[A-Za-z]{3,20})*$/.test(nombre)) {
-          salida.style.color = "red";
-          salida.innerHTML = "Nombre incorrecto (ej: Juan Pérez)";
-        } else {
-          salida.style.color = "green";
-          salida.innerHTML = "OK";
-        }
-      }
-
-      function comprueba_correo() {
-        var correo = document.getElementById("correo").value;
-        var salida = document.getElementById("errcorreo");
-        if (!/^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,4}$/.test(correo)) {
-          salida.style.color = "red";
-          salida.innerHTML = "Correo inválido (ej: usuario@dominio.com)";
-        } else {
-          salida.style.color = "green";
-          salida.innerHTML = "OK";
-        }
-      }
-
-      function comprueba_password() {
-        var pwd = document.getElementById("pwd").value;
-        var salida = document.getElementById("errpassword");
-        if (!/^[a-zA-Z0-9]{3,20}$/.test(pwd)) {
-          salida.style.color = "red";
-          salida.innerHTML =
-            "Contraseña inválida (3-20 caracteres alfanuméricos)";
-        } else {
-          salida.style.color = "green";
-          salida.innerHTML = "OK";
-        }
-      }
-
-      function comprobar_puestos() {
-        var checkboxes = document.querySelectorAll(
-          'input[type="checkbox"][name^="puesto"]'
-        );
-        var cont = 0;
-        checkboxes.forEach((cb) => {
-          if (cb.checked) cont++;
-        });
-        var salida = document.getElementById("errpuestos");
-        if (cont < 2) {
-          salida.style.color = "red";
-          salida.innerHTML = "Seleccione al menos 2 puestos";
-          return false;
-        } else {
-          salida.style.color = "green";
-          salida.innerHTML = "OK";
-          return true;
-        }
-      }
-
-      function botonDisabled() {
-        const validaciones = [
-          document.getElementById("errnombre").innerHTML === "OK",
-          document.getElementById("errapellido").innerHTML === "OK",
-          document.getElementById("errcorreo").innerHTML === "OK",
-          document.getElementById("errpassword").innerHTML === "OK",
-          document.getElementById("errpuestos").innerHTML === "OK",
-        ];
-        document.getElementById("btnEnviar").disabled = !validaciones.every(
-          (v) => v
-        );
-      }
-      function limita2(maximo) {
-        var elemento = document.getElementById("descripcion");
-        var restantes = maximo - elemento.value.length;
-        document.getElementById(
-          "spancaracteres"
-        ).innerHTML = `Quedan ${restantes} caracteres`;
-        return elemento.value.length < maximo;
-      }
-      function permitir(evento, tipo) {
-        const teclasPermitidas = {
-          car: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ",
-          num: "0123456789",
-        };
-        const key = evento.key;
-        return teclasPermitidas[tipo].includes(key);
-      }
-    </script>
     <div class="titulo">
       <a href="index.html" class="logo">Farmacéutica NS</a>
     </div>
@@ -116,183 +29,140 @@
       <span class="a">
         <a href="formulario.html">Iniciar sesión</a>
       </span>
-      <span class="a">
-        <a href="formulario5.html">Registrarse</a>
-      </span>
       <a href="rss.xml"><img src="img/NewsFeeds2.webp" alt="" /></a>
-
       <hr />
     </div>
-    <div class="formularioHtml5">
+
+    <div class="formulario">
       <form
-        action="php/formulariohtml5.php"
+        action="php/maneja_formulario.php"
         method="post"
         enctype="multipart/form-data"
-      ></form>
-      <div class="formulario">
-        <form
-          action="php/formularionormal.php"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <fieldset>
-            <legend>Datos</legend>
-            <p>
-              <label for="correo">e-mail</label>
-              <input
-                type="text"
-                name="correo"
-                id="correo"
-                oninput="comprueba_correo(); botonDisabled();"
-              />
-              <span id="errcorreo"></span>
-            </p>
-            <p>
-              <label for="nombre">Escribe tu nombre: </label>
+      >
+        <fieldset>
+          <legend>Datos</legend>
 
-              <input
-                type="text"
-                name="nombre"
-                id="nombre"
-                oninput="comprueba_nombre(); botonDisabled();"
-                onkeypress="return permitir(event, 'car')"
-              />
-            </p>
-            <p>
-              <label for="apellido">Escribe tu apellido: </label>
-            </p>
-            <input type="text" name="apellido" id="apellido" />
-            <p>
-              <label for="pwd"> Escribe tu password: </label>
+          <label for="id"> Id:</label>
 
-              <input
-                type="text"
-                name="apellido"
-                id="apellido"
-                oninput="comprueba_apellido(); botonDisabled();"
-                onkeypress="return permitir(event, 'car')"
-              />
-            </p>
-            <p>
-              <label for="color">Selecciona el color favorito</label>
-              <input
-                type="password"
-                name="pwd"
-                id="pwd"
-                oninput="comprueba_password(); botonDisabled();"
-              />
-            </p>
-            <p>
-              <label for="so">Sistema operativo</label> <br />
-              <select id="so" name="so" size="7" multiple="multiple">
-                <option value="" selected="selected">- selecciona uno -</option>
-                <option value="w">Windows</option>
-                <option value="mac">Mac</option>
-                <option value="lx">Linux</option>
-                <option value="a" disabled="disabled">Android</option>
-                <option value="otro">Otro</option>
-              </select>
-            </p>
-            <br />
-          </fieldset>
-          <fieldset>
-            <legend>Puestos de trabajo</legend>
-            <p>
-              <label for="puesto"> Qué busca (elige 2)</label><br />
-              <input
-                type="checkbox"
-                name="puesto_directivo"
-                onclick="comprobar_puestos(); botonDisabled();"
-              />
+          <input type="text" name="id" id="id" readonly="readonly" value="1" />
 
-              Dirección
-            </p>
-            <p>
-              <input type="checkbox" name="puesto_tecnico" value="tecnico" />
+          <label for="nombre">Escribe tu nombre: </label>
 
-              Técnico
-            </p>
-            <p>
-              <input type="checkbox" name="puesto_empleado" value="empleado" />
-              Empleado
-            </p>
-            <p>
-              <input type="checkbox" name="puesto_empleado" value="empleado" />
-              puesto_directivo
-            </p>
+          <input
+            type="text"
+            name="nombre"
+            id="nombre"
+            size="40"
+            maxlength="4"
+          />
 
-            <p>
-              <input type="checkbox" name="puesto_empleado" value="empleado" />
-              puesto_tecnico
-            </p>
+          <label for="apellido">Escribe tu apellido: </label>
 
-            <br />
+          <input type="text" name="apellido" id="apellido" />
 
-            <label for="sexo">Sexo </label> <br />
-            <input type="radio" name="sexo" id="sexo" value="hombre" /> Hombre
-            <input type="radio" name="sexo" value="mujer" /> Mujer
-            <input type="radio" name="sexo" value="nsnc" /> no se
-            <br />
+          <label for="pwd"> Escribe tu password: </label>
 
-            <label for="adjunto"> Foto carnet </label>
-            <input type="file" name="adjunto" id="adjunto" />
+          <input type="password" name="pwd" id="pwd" />
 
-            <input
-              type="hidden"
-              name="url_previa"
-              value="/articulo/primero.html"
-            />
+          <label for="so">Sistema operativo</label> <br />
+          <select id="so" name="so" size="7" multiple="multiple">
+            <option value="" selected="selected">- selecciona uno -</option>
+            <option value="w">Windows</option>
+            <option value="mac">Mac</option>
+            <option value="lx">Linux</option>
+            <option value="a" disabled="disabled">Android</option>
+            <option value="otro">Otro</option>
+          </select>
+          <br />
+        </fieldset>
 
-            <input
-              type="submit"
-              value="enviar"
-              id="btnEnviar"
-              disabled="disabled"
-            />
+        <fieldset>
+          <legend>Puestos de trabajo</legend>
 
-            <input
-              type="reset"
-              name="limpiar"
-              value="Borrar datos del formulario"
-            />
+          <label for="puesto"> Qué busca </label><br />
+          <input
+            type="checkbox"
+            name="puesto_directivo"
+            value="direccion"
+            id="puesto"
+          />
+          Dirección
+          <input
+            type="checkbox"
+            name="puesto_tecnico"
+            value="tecnico"
+            checked="checked"
+          />
+          Técnico
+          <input
+            type="checkbox"
+            name="puesto_empleado"
+            value="empleado"
+            checked="checked"
+          />
+          Empleado
 
-            <input
-              type="image"
-              name="enviar"
-              src="img/boton.jpg"
-              onclick="alert('Hola')"
-            />
-            <br />
-            <label for="descripcion"> Escribe algo sobre ti </label>
-            <textarea
-              id="descripcion"
-              name="descripcion"
-              cols="40"
-              rows="5"
-            ></textarea>
+          <br />
 
-            <label for="programa">Programa seleccionado</label> <br />
-            <select id="programa" name="programa">
-              <optgroup label="Sistemas Operativos">
-                <option value="Windows" selected="selected">Windows</option>
-                <option value="Mac">Mac</option>
-                <option value="Linux">Linux</option>
-                <option value="Other">Otro</option>
-              </optgroup>
+          <label for="sexo">Sexo </label> <br />
+          <input type="radio" name="sexo" id="sexo" value="hombre" /> Hombre
+          <input type="radio" name="sexo" value="mujer" /> Mujer
+          <input type="radio" name="sexo" value="nsnc" /> no se
+          <br />
 
-              <optgroup label="Navegadores">
-                <option value="Internet Explorer" selected="selected">
-                  Internet Explorer
-                </option>
-                <option value="Firefox">Firefox</option>
-                <option value="Safari">Safari</option>
-                <option value="Opera">Opera</option>
-                <option value="Other">Otro</option>
-              </optgroup>
-            </select>
-          </fieldset>
-        </form>
-      </div>
+          <label for="adjunto"> Foto carnet </label>
+          <input type="file" name="adjunto" id="adjunto" />
+
+          <input
+            type="hidden"
+            name="url_previa"
+            value="/articulo/primero.html"
+          />
+
+          <input type="submit" value="enviar" />
+
+          <input
+            type="reset"
+            name="limpiar"
+            value="Borrar datos del formulario"
+          />
+
+          <input
+            type="image"
+            name="enviar"
+            src="img/boton.jpg"
+            onclick="alert('Hola')"
+          />
+          <br />
+          <label for="descripcion"> Escribe algo sobre ti </label>
+          <textarea
+            id="descripcion"
+            name="descripcion"
+            cols="40"
+            rows="5"
+          ></textarea>
+
+          <label for="programa">Programa seleccionado</label> <br />
+          <select id="programa" name="programa">
+            <optgroup label="Sistemas Operativos">
+              <option value="Windows" selected="selected">Windows</option>
+              <option value="Mac">Mac</option>
+              <option value="Linux">Linux</option>
+              <option value="Other">Otro</option>
+            </optgroup>
+
+            <optgroup label="Navegadores">
+              <option value="Internet Explorer" selected="selected">
+                Internet Explorer
+              </option>
+              <option value="Firefox">Firefox</option>
+              <option value="Safari">Safari</option>
+              <option value="Opera">Opera</option>
+              <option value="Other">Otro</option>
+            </optgroup>
+          </select>
+        </fieldset>
+      </form>
     </div>
   </body>
 </html>
