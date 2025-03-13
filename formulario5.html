@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javier NS</title>
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" href="css.css" />
+  </head>
+  <body>
+    <script src="scripts.js"></script>
+    <div class="titulo">
+      <a href="index.html" class="logo">Farmacéutica NS</a>
+    </div>
+    <div class="enlaces">
+      <hr />
+      <span class="a"><a title="Medicamento" href="index.html">Inicio</a></span>
+      <span class="a"
+        ><a title="Medicamento" href="medicamentos.html">Medicamentos</a></span
+      >
+      <span class="a"><a href="mapa.html">Estamos</a></span>
+      <span class="a"><a href="formulario.html">Iniciar sesión</a></span>
+      <span class="a"><a href="formulario5.html">Registrarse</a></span>
+      <a href="rss.xml"><img src="img/NewsFeeds2.webp" alt="" /></a>
+      <hr />
+    </div>
+    <div class="formularioHtml5">
+      <div class="formulario">
+        <form
+          action="php/formularionormal.php"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <fieldset>
+            <legend>Datos</legend>
+            <p>
+              <label for="correo">e-mail</label>
+              <input
+                type="text"
+                name="correo"
+                id="correo"
+                oninput="comprueba_correo()"
+              />
+              <span id="errcorreo"></span>
+            </p>
+            <p>
+              <label for="nombre">Escribe tu nombre: </label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                oninput="comprueba_nombre()"
+                onkeypress="return permitir(event, 'car')"
+              />
+              <span id="errnombre"></span>
+            </p>
+            <p>
+              <label for="apellido">Escribe tu apellido:</label>
+
+              <input
+                name="apellido"
+                id="apellido"
+                oninput="comprueba_apellido()"
+                onkeypress="return permitir(event, 'car')"
+              />
+              <span id="errapellido"></span>
+            </p>
+            <p></p>
+            <p>
+              <label for="password">Escribe tu password: </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                oninput="comprueba_password(); botonDisabled();"
+                placeholder="Ej: Clave"
+              />
+              <span id="errpassword"></span>
+            </p>
+            <p>
+              <label for="color">Color de validación</label>
+              <input
+                type="color"
+                id="color"
+                name="color"
+                value="#00ff00"
+                oninput="actualizarColoresOK()"
+              />
+            </p>
+            <p>
+              <label for="so">Sistema operativo</label>
+              <select id="so" name="so" size="7" multiple required>
+                <option value="" selected>- selecciona uno -</option>
+                <optgroup label="Sistemas Operativos">
+                  <option value="w">Windows</option>
+                  <option value="mac">Mac</option>
+                  <option value="lx">Linux</option>
+                  <option value="a" disabled>Android</option>
+                  <option value="otro">Otro</option>
+                </optgroup>
+              </select>
+              <span id="errso"></span>
+            </p>
+          </fieldset>
+          <fieldset>
+            <legend>Puestos de trabajo</legend>
+            <p>
+              <input
+                type="checkbox"
+                name="puesto_directivo"
+                onclick="comprobar_puestos()"
+              />
+              Dirección
+            </p>
+            <p>
+              <input
+                type="checkbox"
+                name="puesto_tecnico"
+                onclick="comprobar_puestos()"
+              />
+              Técnico
+            </p>
+            <p>
+              <input
+                type="checkbox"
+                name="puesto_empleado"
+                onclick="comprobar_puestos()"
+              />
+              Empleado
+            </p>
+            <span id="errpuestos"></span>
+            <br />
+            <label>Sexo</label>
+            <input
+              type="radio"
+              name="sexo"
+              value="hombre"
+              onchange="comprueba_sexo(); botonDisabled();"
+            />
+            Hombre
+            <input
+              type="radio"
+              name="sexo"
+              value="mujer"
+              onchange="comprueba_sexo(); botonDisabled();"
+            />
+            Mujer
+            <input
+              type="radio"
+              name="sexo"
+              value="nsnc"
+              onchange="comprueba_sexo(); botonDisabled();"
+            />
+            No sé
+            <br />
+            <span id="errsexo"></span>
+            <label>Foto carnet</label>
+            <input
+              type="file"
+              name="adjunto"
+              id="adjunto"
+              onchange="validarFoto(); botonDisabled();"
+            />
+            <span id="errfoto"></span>
+            <br />
+            <label>Escribe algo sobre ti</label>
+            <textarea
+              id="descripcion"
+              onkeypress="return limita2(100)"
+            ></textarea>
+            <span id="spancaracteres"></span>
+
+            <span id="errprograma"></span>
+
+            <input type="reset" value="Borrar" id="borrar" />
+            <input type="button" value="Enviar" id="btnEnviar" disabled />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

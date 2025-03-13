@@ -1,0 +1,22 @@
+<rss version="2.0">
+<channel>
+<title>El canal de la Farmacia</title>
+<link>index.html</link>
+<description>Volver al Inicio</description>
+<item>
+<title>Posible nueva pandemia</title>
+<link>https://es.wikipedia.org/wiki/Provincia_de_Asir</link>
+<description>Aprobarán todos menos uno</description>
+</item>
+<item>
+<title>que es rss</title>
+<link>localhost</link>
+<description>Contenido de esta información</description>
+</item>
+<item>
+<title>Título del artículo</title>
+<link>Dirección Web a la que podemos ir para ampliar esta información</link>
+<description>Contenido de esta información</description>
+</item>
+</channel>
+</rss>
