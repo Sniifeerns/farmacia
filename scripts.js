@@ -58,19 +58,22 @@ function comprueba_correo() {
 
 // Validación de contraseña
 function comprueba_password() {
-  var password = document.getElementById("password").value;
+  var password = document.getElementById("password").value.trim();
   var salida = document.getElementById("errpassword");
-  var colorValido = document.getElementById("color").value;
-  if (password.length == 0 || password == null || /^\s+$/.test(password)) {
-    salida.innerHTML = "Has de rellenar la contraseña ";
+  var colorValido = document.getElementById("color").value || "green"; // Valor por defecto si no existe el input "color"
+
+  if (password === "") {
+    salida.innerHTML = "Debes rellenar la contraseña";
     salida.style.display = "inline";
     salida.style.color = "red";
-  } else if (/^[a-zA-Z0-9]{3,20}$/.test(password)) {
+  } 
+  // Validar longitud (3-20) y que contenga al menos una letra y un número [[2]][[3]]
+  else if (/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]{3,20}$/.test(password)) {
     salida.innerHTML = "OK";
     salida.style.color = colorValido;
-  } else {
-    salida.innerHTML =
-      "Contraseña incorrecta, solo numeros y letras minimo 3 y maximo 20, ejemplo inves";
+  } 
+  else {
+    salida.innerHTML = "Contraseña inválida: debe tener 3-20 caracteres, solo letras y números, y al menos una letra y un número. Ejemplo: Abc123";
     salida.style.display = "inline";
     salida.style.color = "red";
   }
