@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <!-- Información básica del feed -->
   <title>Farmacia Online - SniiFeErns</title>
   <subtitle>Tu farmacia en línea confiable: medicamentos, productos de salud y bienestar.</subtitle>
   <link href="https://sniifeerns.github.io/farmacia/atom.xml" rel="self"/>
@@ -11,8 +10,6 @@
     <name>SniiFeErns Farmacia</name>
     <email>contacto@sniifeerns.github.io</email>
   </author>
-
-  <!-- Entrada 1: Promoción de productos -->
   <entry>
     <title>Promoción Especial: 20% de descuento en vitaminas</title>
     <link href="https://sniifeerns.github.io/farmacia/"/>
@@ -27,7 +24,6 @@
     </content>
   </entry>
 
-  <!-- Entrada 2: Nuevo producto disponible -->
   <entry>
     <title>Nuevo producto: Crema hidratante para piel sensible</title>
     <link href="https://sniifeerns.github.io/farmacia/productos"/>
@@ -42,7 +38,6 @@
     </content>
   </entry>
 
-  <!-- Entrada 3: Consejos de salud -->
   <entry>
     <title>Consejo de salud: Cómo cuidar tu sistema inmunológico</title>
     <link href="https://sniifeerns.github.io/farmacia/"/>
